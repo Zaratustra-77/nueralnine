@@ -14,9 +14,7 @@ class Home_page:
         """
         self.driver = driver
 
-    # Inside your Home_page class
-    def current_url(self):
-        return self.driver.current_url
+
 
     def click_books(self) -> None:
         """

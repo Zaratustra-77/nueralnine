@@ -1,11 +1,11 @@
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC #
+from selenium.webdriver.common.by import By # no idea -> research online -> ask teacher
+from selenium.webdriver.support.wait import WebDriverWait # no idea -> research online -> ask teacher
 
 
 
-class Actions():
-    def __init__(self,driver):
+class Actions: # creating a class Actions
+    def __init__(self,driver): # initializes certain attributes when creating a class object
         """
         instantiate a driver for the class to be used in its functionality
         :param driver:
@@ -16,6 +16,10 @@ class Actions():
         return self.driver.current_url
 
     def get_menu_items(self):
+        """
+
+        :return:
+        """
         menu_items = self.driver.find_elementS(By.ID, 'menu-navigation').find_elements(By.XPATH, './/li')
         menu_list = []
 
