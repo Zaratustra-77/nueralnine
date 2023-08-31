@@ -11,9 +11,12 @@ from selenium.webdriver.chrome.options import Options  # creates a Options objec
 from webdriver_manager.chrome import ChromeDriverManager  # to instantiate a new driver.exe or cached for the session
 
 
+
+
 class DriverSetUp(TestCase):
 
     def setUp(self) -> None:
+        print('Driver setup')
         options = Options()
         service = Service(ChromeDriverManager().install())
         options.add_experimental_option("detach", True)
@@ -22,6 +25,12 @@ class DriverSetUp(TestCase):
 
     def tearDown(self) -> None:
         self.driver.quit()
+
+
+
+
+
+
 
 
 if __name__ == '__main__':

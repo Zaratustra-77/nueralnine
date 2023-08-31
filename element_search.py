@@ -45,7 +45,11 @@ def driver_setup():
 
 
 # driver actions:
-
+options = Options()
+service = Service(ChromeDriverManager().install())
+options.add_experimental_option("detach", True)
+options.add_argument("--disable-extensions")
+driver = webdriver.Chrome(service=service, options=options)
 
 my_driver = driver_setup()
 get_url(my_driver, 'https://www.neuralnine.com')

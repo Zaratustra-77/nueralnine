@@ -29,9 +29,16 @@ class Actions: # creating a class Actions
             menu_list.append({'id': menu_id, 'class': menu_class})
 
         return menu_list
+    def find_element(self,locator,value):
+        locator_type = getattr(By, locator) # returns
+        elemnt = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((locator_type, value)))
+
+        return elemnt
+
 
     def click_element(self,locator,value):
         locator_type = getattr(By, locator) # returns
         elemnt = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((locator_type, value)))
         elemnt.click()
+        return elemnt
 

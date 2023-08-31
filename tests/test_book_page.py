@@ -12,3 +12,6 @@ class TestBP(DriverSetUp):
         self.driver.get(self.URL)
         self.b00k_page = Book_page(self.driver)
         self.Actions = Actions(self.driver)
+
+    def tes_1(self):
+        assert 1==1

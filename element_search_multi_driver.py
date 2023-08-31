@@ -1,10 +1,15 @@
 import time
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.firefox import GeckoDriverManager
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 
 # Functions to interact with elements
@@ -24,9 +29,6 @@ def click_books(driver):
 
 # Driver setup for Chrome
 def chrome_driver_setup():
-    from selenium.webdriver.chrome.service import Service
-    from selenium.webdriver.chrome.options import Options
-    from webdriver_manager.chrome import ChromeDriverManager
 
     options = Options()
     service = Service(ChromeDriverManager().install())
@@ -37,7 +39,6 @@ def chrome_driver_setup():
 
 # Driver setup for Firefox
 def firefox_driver_setup():
-    from selenium.webdriver.firefox.service import Service as FirefoxService
     firefox_options = webdriver.FirefoxOptions()
     firefox_options.set_preference("extensions.disabled", True)
     service = FirefoxService(executable_path=GeckoDriverManager().install())
@@ -48,7 +49,6 @@ def firefox_driver_setup():
 # Driver setup for Edge
 
 def edge_driver_setup():
-    from selenium.webdriver.edge.service import Service as EdgeService
 
     edge_options = webdriver.EdgeOptions()
     edge_options.use_chromium = True
@@ -60,19 +60,20 @@ def edge_driver_setup():
 
 # Modify this line to use the driver you want
 my_chrome_driver = chrome_driver_setup()  # Replace with firefox_driver_setup() or edge_driver_setup() based on your needs
-# my_firefox_driver = firefox_driver_setup()
-# my_edge_driver = edge_driver_setup()
+my_firefox_driver = firefox_driver_setup()
+my_edge_driver = edge_driver_setup()
 
 
 get_url(my_chrome_driver, 'https://www.neuralnine.com')
-# get_url(my_firefox_driver, 'https://www.neuralnine.com')
-# get_url(my_edge_driver, 'https://www.neuralnine.com')
+get_url(my_firefox_driver, 'https://www.neuralnine.com')
+get_url(my_edge_driver, 'https://www.neuralnine.com')
 
 
 # Perform actions using Chrome driver
-get_url(my_chrome_driver, 'https://www.neuralnine.com')
-click_books(my_chrome_driver)
-time.sleep(3)
+get_url(my_chrome_driver, 'https://www.google.com')
+# element = my_chrome_driver.find_element(By.ID, "menu-item-715").click()
+
+time.sleep(10)
 my_chrome_driver.close()
 my_chrome_driver.quit()
 
