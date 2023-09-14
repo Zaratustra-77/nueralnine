@@ -11,7 +11,8 @@ def click_element(driver, locator, value):
     locator_type = getattr(By, locator)  # returns
     elemnt = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((locator_type, value)))
     elemnt.click()
-
+def new():
+    pass
 def click_books(driver) -> None:
     """
     click on th eBooks button
